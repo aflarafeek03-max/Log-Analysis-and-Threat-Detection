@@ -194,7 +194,66 @@ Key Security Insight:
 - The volume of access attempts on Authentication and Administrator type endpoints will most likely indicate a **brute force** attempt or at the very least, show patterns of possible automated Recon Activity.
 - Also, the near-even split of allowed versus blocked traffic indicates that while the security system is blocking a considerable number of requests, some potentially malicious traffic is still making its way to the application, and emphasizes the need for tighter access controls at the sensitive endpoints or implementing stricter rate limits.
 
-# 5. Conclusion
+# 5.Comparison of Kibana Visualizations and Kibana Lens Visual Analytics
+- In this project, we used two different visualization techniques within Kibana to analyze cybersecurity logs — Basic Kibana Visualizations and Kibana Lens (Elastic Lens).
+- While both use the same underlying dataset, they provide different levels of analytical depth and serve different SOC (Security Operations Center) purposes.
+- The purpose of this comparison is to illustrate how the use of different analysis methodologies can yield different insights from the same dataset.
+- The findings also demonstrate a similarity to Cyber operation workflows, where the use of higher-level dashboards is often used in conjunction with in-depth investigative queries to help validate or dismiss a suspected threat.
+
+# Graph-by-Graph Comparison:
+# 1)Security Question Answered: Through what method is traffic filtering accomplished? (Allowed versus Blocked) 
+# Kibana Basic Visualization:
+Provides summary statistics (the number of allowed and blocked events).
+# Kibana Lens Advanced View:
+Provides hourly summaries (including details of trends and identification of anomalies) of the number of allowed and blocked connections.
+# Graph Numbers Used:
+Basic Graph 1 - Lens Graph 3
+
+# 2)Security Question Answered: Which IPs are generating the most activity?
+# Kibana Basic Visualization:
+Provides a list of the most active IP addresses based on traffic volume.
+# Kibana Lens Advanced View:
+Includes a sunburst chart that highlights the allow/block ratio for each IP, with a focus on identifying suspicious high-volume IP activity.
+# Graph Numbers Used:
+Basic Graph 3 - Lens Graph 1
+
+# 3)Security Question Answered: What endpoints have been targeted?
+# Kibana Basic Visualization:
+Not shown in basic visuals
+# Kibana Lens Advanced View:
+Allowed vs Blocked requests for the following URIs; (/login, /auth, /admin/config) - Allows identification of active probing/brute force activity
+# Graph Numbers Used:
+Lens Graph 4
+
+# 4)Security Question Answered: What activity has occurred over time?
+# Kibana Basic Visualization:
+Not visible in the  basic dashboard
+# Kibana Lens Advanced View:
+Log Volumes reveal periods of higher activity on April 19 and August 21
+# Graph Numbers Used:
+Lens Graph 2
+
+# 5)Security Question Answered: Overall Threat Severity Level?
+# Kibana Basic Visualization:
+Distribution of benign, suspicious, and malicious events
+# Kibana Lens Advanced View:
+Correlation of threat severity levels over time and IP address patterns is shown.
+# Graph Numbers Used:
+Basic Graph 4 - Lens Graph 2 & 3
+
+# Key Findings from Comparison:
+- Kibana's standard visuals allow for a quick overview of overall network activity so that you can gauge typical usage patterns and how effective filtering is.
+- Kibana Lens offers a more detailed approach when performing threat analysis, including the ability to identify irregularities in:
+     Time periods during which attacks were heavily concentrated
+     IP Addresses performing extensive scanning of your site
+     Repeatedly accessing sensitive directories (/login, /auth, /admin/config)
+- The combination of these two methods allows you to simulate the activities within a security operations centre (SOC), as analysts would begin their analysis with the higher-level dashboards and drill down from there into more concentrated work views.
+
+# Why This Comparison Is Important:
+- Visualising alternative perspectives of the same log data set illustrates how different analytical approaches yield insight into the same dataset, at various levels.
+- For example, a basic level visualisation clearly indicates what is occurring within a network, while an updated Lens visualisation provides detailed information regarding the reasoning behind the activities within the network, as well as where to best focus investigative efforts. Providing multiple levels of understanding (analysis) is an essential component of real-world cybersecurity monitoring and threat-hunting.
+
+# 6. Conclusion
 # Key Takeaway
 - Structured Visual Dashboards Give Unrivaled Threat Detection Visibility
 - Multiple Patterns of High Volumes of Suspicious IPs and Accessing the Sensitive Paths Show Potential for Malicious Intent
@@ -214,3 +273,4 @@ Key Security Insight:
 - Elastic Stack Documentation
 - Grafana Documentation
 - BFOR 519 Course Resources
+- Chat Gpt 5 and Gooogle for some visulization and comparison research
