@@ -116,7 +116,7 @@ Insight:
 
  # Extended Findings (Elasticsearch Queries & Statistics)
 
-# 1. Top 10 IP Addresses With Action (Allowed vs Blocked)
+# 1. Top 10 IP Addresses With Action (Allowed vs Blocked) ![alt text](<Top 10 ips with action.png>)
 
 Description:
 - Sunburst visualisation of the top 10 source IP addresses that were found in the dataset showing all corresponding actions (allowed or blocked).
@@ -130,7 +130,7 @@ Key Security Insight:
 - A very limited number of IP addresses generates a large number of the total activity.
 - While the fact that there are equal numbers of allowed and blocked indicates the legitimate mix of traffic coming from these IP addresses, the sheer volume of traffic generated warrants further investigation, as it could be possible that this traffic is the result of an automated service; the result of a misconfigured client; or early indicators of attempts to conduct reconnaissance against the network, as evidenced by the fact that the same client IP attempts to connect several times, resulting in both Approval and Denial actions.
 
-# 2. Log Volume by Day (Top Values)
+# 2. Log Volume by Day (Top Values) ![alt text](<Top 10 logins.png>) 
 Description:
 The Bar Chart represents The Highest Amount Of Activity Gathered By Users Over the days From The Data Set And The Dates With The Most Activity:
 Interpretation:
@@ -146,7 +146,7 @@ Key Security Insight:
 - The two days with increased user activity should be investigated to determine whether increased User Activity resulted from an increased number of blocked actions/an increased number of repeated access attempts by a single IP, or an  increased number of suspicious or malicious threat claims.
 - Users were using not only average volume throughout 99% of Days, but it was also an indication of normal network activity and how users typically behave.
 
-# 3. Hourly Activity: Blocked vs Allowed (Bar Chart)
+# 3. Hourly Activity: Blocked vs Allowed (Bar Chart) ![alt text](<Allowed blocked.png>)
 Description:
 - This visualization looks at how traffic flows through a network hourly through blocked or allowed actions.
 - It gives an overall picture of how the network filters traffic throughout each hour of the day and how regularly and significantly there is a difference between blocked traffic behaviour from allowed traffic behaviour.
@@ -166,7 +166,7 @@ Key Security Insight:
 - Because both the blocking event and allowing event percentages are so nearly equal, it is more important to review the intent of each blocked or allowed event by reviewing the surrounding context, particularly as it relates to blocking events during specific hours (with an influx on particular IPs) instead of only on raw data event volume.
 -  The balance suggests that, while the need is apparent, both filtering systems are working and evaluating traffic as it enters the network.
 
-# 4. Request Path (Blocked vs Allowed)
+# 4. Request Path (Blocked vs Allowed) ![alt text](<Path.png>)
 Description:
 - This graph provides an overview of the volume of allowed versus blocked requests for the five most frequently accessed request paths among many.
 -  It shows which URL endpoints are accessed the most frequently, and how many of those requests were denied as a result of security measures.
