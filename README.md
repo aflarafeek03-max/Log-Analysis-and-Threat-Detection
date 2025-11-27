@@ -113,94 +113,104 @@ Insight:
 -  Web-based protocols (HTTP, HTTPS, and TCP) accounted for the majority of the data transmitted.
 - There are a small number of source IP addresses creating most of the network traffic.
 - While the majority of the transmitted data is considered non-malicious, there were suspicious and/or clearly malicious transmissions detected.
- 
-#Extended Findings (ElasticSearch)
 
-1. Top 10 IP Addresses With Action (Allowed vs Blocked)
+ # Extended Findings (Elasticsearch Queries & Statistics)
+
+# 1. Top 10 IP Addresses With Action (Allowed vs Blocked)
 
 Description:
-This sunburst visualization shows the top 10 source IP addresses in the dataset and breaks down their corresponding actions (allowed or blocked). 
-Each outer slice represents how that specific IP's traffic was handled by the security system.
-
+- Sunburst visualisation of the top 10 source IP addresses that were found in the dataset showing all corresponding actions (allowed or blocked).
+- Each slice represents how traffic from the specific IP was handled by the security system.
 Interpretation:
-
-- The top three IPs — 109.47.72.119, 44.137.187.63, and 61.72.172.125 — each contribute roughly 10% of all recorded traffic.
-- Most high-volume IPs display a near-even split between allowed and blocked traffic (each around 4.8–5.2%).
-- This suggests these hosts consistently interact with the network and are subject to security filtering rather than wholesale blocking.
-- The repetition of near-equal allowed/blocked percentages indicates that security rules are actively evaluating traffic instead of blanket-blocking entire IPs, which is consistent with adaptive or behavior-based filtering rather than static denylists.
-
+- In the Top Three IPs 109.47.72.119, 44.137.187.63, and 61.72.172.125 there is close to an equal amount (approximately) each contributes about 10 percent of the total recorded traffic.
+- Most High Volume IPs show an almost equal split of allowed/blocked traffic — right around 4.8 to 5.2 percent each.
+- This means that these hosts interact consistently with the network and therefore traffic coming from them is subject to some type of security filtering, rather than being completely blocked.
+- Since the percentage of both allowed/blocked actions is almost the same, it is likely that the security rules are using Adaptive/Based filtering to evaluate traffic, rather than simply putting them on a Denylist/Block List for that IP. 
 Key Security Insight:
-A handful of IP addresses generate the majority of activity. While the even distribution of allowed/blocked actions suggests legitimate mixed traffic, the high volume itself warrants deeper inspection — these could represent automated services, misconfigured clients, or early signs of reconnaissance (e.g., repeated attempts triggering both approvals and denials).
+- A very limited number of IP addresses generates a large number of the total activity.
+- While the fact that there are equal numbers of allowed and blocked indicates the legitimate mix of traffic coming from these IP addresses, the sheer volume of traffic generated warrants further investigation, as it could be possible that this traffic is the result of an automated service; the result of a misconfigured client; or early indicators of attempts to conduct reconnaissance against the network, as evidenced by the fact that the same client IP attempts to connect several times, resulting in both Approval and Denial actions.
 
-2. Log Volume by Day (Top Values)
+# 2. Log Volume by Day (Top Values)
 Description:
-This bar chart displays the highest daily log counts in the dataset.
-It highlights specific dates where activity significantly spikes.
-
+The Bar Chart represents The Highest Amount Of Activity Gathered By Users Over the days From The Data Set And The Dates With The Most Activity:
 Interpretation:
-
-Two dates show notably elevated activity: April 19, 2024 (2,028 logs) and August 21, 2024 (2,007 logs).
-This is nearly double the activity seen on the other days, which hover around 1,029–1,035 logs.
-
+- There were two notable days of Increased Activity On The Graph: April 19th, 2024, there were 2,028 Logs Recorded; August 21st, 2024, there were 2,007 Logs Recorded.
+- Both Of These Days Represent Almost Twice As Much Activity As All The Other Days (Most Days 1,029-1,035).
 These spikes may indicate:
-  - Scheduled system scans
-  - High-traffic operational periods
-  - Potential probing or brute-force attempts
-  - Large bursts of automated activity
-
-The remaining dates show an extremely consistent pattern (~1,030 logs), suggesting typical daily baseline traffic volume.
-
+ - Scheduled System Scans
+ - High Traffic Operational Periods
+ - Probing Or Brute Force Attempts
+ - Automated Large Bursts Of Activity
+The rest of the Days Demonstrated a Consistent Pattern (Average ~1,030). The Consistent Pattern Is an indication Of Normal Daily Activity Levels.
 Key Security Insight:
-The two high-activity days should be investigated to identify whether the spike correlates with increased blocked actions, repeated attempts from the same IP, or a sudden rise in suspicious or malicious threat labels. Consistent baseline volume across the remaining days confirms that most days follow predictable network behavior.
+- The two days with increased user activity should be investigated to determine whether increased User Activity resulted from an increased number of blocked actions/an increased number of repeated access attempts by a single IP, or an  increased number of suspicious or malicious threat claims.
+- Users were using not only average volume throughout 99% of Days, but it was also an indication of normal network activity and how users typically behave.
 
-3. Hourly Activity: Blocked vs Allowed (Bar Chart)
-
+# 3. Hourly Activity: Blocked vs Allowed (Bar Chart)
 Description:
-This visualization compares the total number of blocked versus allowed network actions aggregated at the hourly level. 
-It provides a clear view of how traffic is being filtered throughout the day and whether blocking patterns differ significantly from allowed activity.
-
+- This visualization looks at how traffic flows through a network hourly through blocked or allowed actions.
+- It gives an overall picture of how the network filters traffic throughout each hour of the day and how regularly and significantly there is a difference between blocked traffic behaviour from allowed traffic behaviour.
 Data Summary:
-
-Blocked: 522,617 events
-Allowed: 522,679 events
-
+Blocked Traffic: 522,617 events
+Allowed Traffic: 522,679 events
 Interpretation:
-The counts are nearly identical, with a difference of only **62 hour difference** between allowed and blocked.
-This extremely balanced ratio suggests that the network’s filtering and detection systems are actively evaluating each request individually, rather than defaulting toward a heavier allow-or-deny bias.
+- The totals are nearly equal, with a **62-hour difference** separating the allowed actions from the blocked actions.
+- The extraordinarily balanced ratio indicates that both filtering mechanisms and detection mechanisms within the network are looking at each request in isolation, rather than making a decision based on a stronger bias to allow requests versus deny requests.
+All the similar events suggest that the vast majority (about half) of events that occurred in each hour would be considered to have the characteristics of non-compliance (suspicious) traffic.
+When both filtering systems are equally applied to each event, it is indicative of environments that have:
+Constant automated scanning
+-  High frequency of retries
+-  Systems that generate both valid and invalid requests
+-  Low-level reconnaissance of both the blocked event outcomes and those allowed
+Key Security Insight:
+- Because both the blocking event and allowing event percentages are so nearly equal, it is more important to review the intent of each blocked or allowed event by reviewing the surrounding context, particularly as it relates to blocking events during specific hours (with an influx on particular IPs) instead of only on raw data event volume.
+-  The balance suggests that, while the need is apparent, both filtering systems are working and evaluating traffic as it enters the network.
 
-The similarity in counts also indicates:
-Traffic is highly mixed, with roughly half of all hourly events deemed suspicious or noncompliant.
-
-This balanced filtering is characteristic of environments with:
-
-- Regular automated scanning
-- Frequent request retries
-- Systems that generate both legitimate and malformed requests
-- Potential low-level reconnaissance attempts that repeatedly trigger both outcomes
+# 4. Request Path (Blocked vs Allowed)
+Description:
+- This graph provides an overview of the volume of allowed versus blocked requests for the five most frequently accessed request paths among many.
+-  It shows which URL endpoints are accessed the most frequently, and how many of those requests were denied as a result of security measures.
+Data Overview:
+The following request paths and associated numbers shown on the graph represent this overview of allowed and blocked requests:
+- The **/** path has received the greatest amount of traffic with almost equal amounts of allowed and blocked requests.
+- This demonstrates that there may be aggressive scanning or broad probing activities.
+- There are also significant volumes of traffic on sensitive requests (i.e., "**/login**", "**/auth**" and "**/admin/config**"), as well as nearly equal amounts of allowed and blocked requests.
+- This indicates repeated validation attempts or automated probing for admin access points.
+Significant Security Insight:
+- The high levels of attempts to access authentication and administration system paths may indicate brute-force attacks by way of automated reconnaissance due to the ratio of allowed to blocked requests.
+- The results of the analysis suggest that while many requests are filtered out by security controls, there are still risks associated with requests that have been allowed access to the application.
+- There may also be a need for stricter security measures and/or rate-limiting placed on these sensitive requests.
+Data Summary:
+- **/** - 238,667 Allowed | 239,067 Blocked
+- **/login** - 35,896 Allowed | 36,198 Blocked
+- **/admin/config** - 19,943 Allowed | 19,884 Blocked
+- **/auth** - 19,608 Allowed | 19,746 Blocked
+- **/api/v1/data** - 19,645 Allowed | 19,531 Blocked
+Interpretation:
+- The endpoint **/** has generated far more activity than any other, with approximately equal proportions of allowed to blocked traffic, which is indicative of either prolonged periods of **aggressive scanning** and/or broad-based intervals of **persistent probing**.
+- Endpoints such as **/login**, **/auth**, and **/admin/config** all experienced considerable amounts of traffic with near parity between allowed and blocked traffic, suggesting frequent attempts to login / authenticate or that an automated probing of the Administrator type interface.
 
 Key Security Insight:
-Because the system blocks and allows traffic at almost identical rates, monitoring the context around each change (such as spikes in blocked actions during certain hours or repeated failures from specific IPs) becomes more important than relying on raw event volume. The even distribution suggests that while the network is performing as expected, high variability in request quality may indicate ongoing **probing** or **repeated automated processes** interacting with the system.
+- The volume of access attempts on Authentication and Administrator type endpoints will most likely indicate a **brute force** attempt or at the very least, show patterns of possible automated Recon Activity.
+- Also, the near-even split of allowed versus blocked traffic indicates that while the security system is blocking a considerable number of requests, some potentially malicious traffic is still making its way to the application, and emphasizes the need for tighter access controls at the sensitive endpoints or implementing stricter rate limits.
 
-4. Request Path (Blocked vs Allowed)
+# 5. Conclusion
+# Key Takeaway
+- Structured Visual Dashboards Give Unrivaled Threat Detection Visibility
+- Multiple Patterns of High Volumes of Suspicious IPs and Accessing the Sensitive Paths Show Potential for Malicious Intent
+- An Allow/Block Ratio Provides Context on Raw Volume and Opportunities to Add Contextual Alerts
+# Lessons Learned
+- Data Cleaning is Essential to Provide Accurate Analysis
+- Using Visualization Makes Security Decisions Faster
+- Using Multiple Tools (Kibana + Grafana) Increases Monitoring Capabilities
+# Future Enhancements
+- Add Automatic Alerting and Correlation Rules
+- Increase Dataset by Adding more Log Types (Firewall, DNS, Proxy)
+- Implement Machine Learning-Based Anomaly Detection
+- Containerize the Ingestion and Visualization Pipeline
 
-Description
-
-This chart visualizes the number of **allowed** and **blocked** requests across the most common request paths. 
-It highlights which URL endpoints receive the highest volume of traffic and how often that traffic is denied due to security controls.
-
-Data Summary
-
-- / — 238,667 allowed, 239,067 blocked
-- /login — 35,896 allowed, 36,198 blocked
-- /admin/config — 19,943 allowed, 19,884 blocked
-- /auth — 19,608 allowed, 19,746 blocked
-- /api/v1/data — 19,645 allowed, 19,531 blocked
-
-Interpretation:
-The root path **/** received by far the most traffic, with almost equal proportions of allowed and blocked requests, suggesting **aggressive scanning** or **broad probing** behavior.
-Sensitive paths such as **/login**, **/auth**, and **/admin/config** also show sizable traffic and near parity between allowed and blocked requests, indicating repeated authentication attempts or automated probing for admin interfaces.
-
-Key Security Insight:
-High traffic access attempts to authentication and administrative paths may indicate brute-force attempts, and potential automated recon activity.
-The nearly equal split between allowed and blocked requests suggests that while the security system is filtering many requests, potentially risky traffic is still reaching the application.
-Indicating a need for tighter access control or rate-limiting on sensitive endpoints.
+# References
+- Kaggle Cybersecurity Threat Detection Dataset
+- Elastic Stack Documentation
+- Grafana Documentation
+- BFOR 519 Course Resources
