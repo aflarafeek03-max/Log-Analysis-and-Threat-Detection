@@ -1,15 +1,51 @@
-# Log-Analysis-and-Threat-Detection
-BFOR 519 Project - Log Analysis and Threat Detection using Kibana and Kaggle Data
+# Log Analysis and Threat Detection
+# BFOR 519 – Log Analysis and Threat Detection Project Topic
+# Team Members: Afla Rafeek | Saanvi Shah | Elijah A. Acero
 
-#Group Members
-- Afla Rafeek
-- Saanvi Shah
-- Elijah A. Acero
+# Group Members & Roles
+Saanvi Shah:	Data processing, cleaning & formatting; development of detection rules; documentation & result interpretation
+Afla Rafeek:	Environment setup (Windows), dataset upload, log ingestion, Kibana visualization & dashboard creation
+Elijah A. Acero:	Grafana setup, dashboard comparison, data analysis support, testing & validation
 
-#Group Members and Roles
-- Saanvi Shah: Detection rules, documentation on rule logic  
-- Afla Rafeek: Data upload, visualization, dashboard creation  
-- Elijah A. Acero: Grafana setup, system monitoring, dashboard comparison
+# 1. Project Summary
+- The focus of this project is on the analysis of cybersecurity log data to identify suspicious and/or malicious activities via interactive dashboards. 
+- The logs were gathered into Elasticsearch and were rendered into visualizations using Kibana and Grafana to show trends in traffic flow, abnormal traffic originating from a given IP address, what traffic was allowed, what traffic was blocked, and to what sensitive endpoints requests to access those endpoints were being made.
+- The goal is to show how raw Source Log data from an organization's Security Operations Center(SOC) can be transformed into useful awareness of potential threats to that organization and allow for timely, effective responses to such threats, representing typical environments for today's modern Security Operations Centers (SOC).
+
+# 2. Rationale for the Project
+- In cybersecurity, log analysis is critical to threat hunting, SOC monitoring, and digital forensics.
+- Most cyber attacks and intrusions start with slight behavior changes detected in the logs of all systems.
+- Using visual analysis of logs, we can identify reconnaissance, brute force attacks, unauthorized scanning, and abuse of sensitive application areas far sooner than would be possible with standard techniques.
+
+# Why We Selected This Topic
+- Having hands-on experience with modern monitoring solutions, like Elasticsearch, Kibana, and Grafana, would help us widen our knowledge of currently used solutions in the industry for operational monitoring and security analytics.
+
+# Skills & Knowledge Acquired
+- Log preprocessing, normalization, and ingestion
+- Dashboard creation, visualization techniques, and interpreting cyber threat patterns and traffic anomalies
+- Collaborative systems analysis/documentation
+- Understanding the workflows and detection logic of SOCs
+
+# Who Can Benefit From This
+- SOC analysts and cybersecurity engineers
+- Digital forensic investigators
+- Students who are learning about security monitoring tools
+- Organizations that track network traffic and anomalies
+
+# 3. Methodology
+# Setup & Environment
+Operating System: Windows
+Datasets: Cybersecurity Threat Detection Logs (CSV file in Kaggle)
+# Tools utilised:
+- Elasticsearch used as the indexing/search engine
+- Kibana provides security dashboards with analyses performed within them
+- Grafana provides visual comparisons and monitoring capabilities
+- Python  to assist with data cleansing and formatting.
+
+# Architecture / Workflow
+<img width="908" height="680" alt="Screenshot 2025-11-27 002209" src="https://github.com/user-attachments/assets/a55f92da-7219-4fcc-aa7b-a8df42dedb41" />
+
+
 
 #Visualization & Analysis (Kibana)
 
