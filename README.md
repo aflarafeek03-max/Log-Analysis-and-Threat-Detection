@@ -42,80 +42,77 @@ Datasets: Cybersecurity Threat Detection Logs (CSV file in Kaggle)
 - Grafana provides visual comparisons and monitoring capabilities
 - Python  to assist with data cleansing and formatting.
 
-# Architecture / Workflow
+# Architecture / Workflow:
 <img width="908" height="680" alt="Screenshot 2025-11-27 002209" src="https://github.com/user-attachments/assets/a55f92da-7219-4fcc-aa7b-a8df42dedb41" />
 
+# Step-by-Step Process:
+1. Download the dataset
+2. Clean and format fields (time format, path structure, type of data)
+3. Set up Elasticsearch & Kibana on a Windows machine
+4. Import the cleaned up data into an Elasticsearch index
+5. Develop visualizations in Kibana (activity, IPs by distribution, protocols)
+6. Set up a Grafana dashboard for side-by-side comparison
+7. Test, analyze and validate the results
+8. Identify insights and record them
 
-
-#Visualization & Analysis (Kibana)
-
-1. Action Distribution(Blocked vs Allowed)
-
+# 4.Results
+# Visualization & Analysis (Kibana)
+# 1. Action Distribution(Blocked vs Allowed)
 Description:
-This chart compares the number of network actions that were allowed versus blocked. It provides a quick overview of how the security system handled incoming and outgoing connections.
-
-Data Fields Used:
-- action
-- timestamp
-
-Insight:
-The chart shows an almost equal number of blocked and allowed actions. This indicates that the network security policies are balanced, filtering traffic effectively while still allowing legitimate connections.
+- This chart provides a quick view of the difference between the total number of network actions that were allowed versus those that were blocked when using the network security systems with respect to both inbound and outbound Internet Protocol (IP) connections.
+Data Fields:
+- The action
+- The timestamp
+Observations:
+- The data shows that for both inbound and outbound connections that were initiated from this location, the number of inbound requests and outbound responses blocked was approximately equal in total counts when compared with all actions that were allowed.
+- Such a finding would indicate a proper balance between filtering the data traffic that passes through these devices and allowing for valid connections.
 
 ![alt text](<Action Distribution.png>)
 
-2. Top Protocols in Network Logs
-
+# 2. Top Protocols in Network Logs
 Description:
-This visualization highlights the top communication protocols (such as TCP, HTTP, and UDP) recorded in the network logs. It helps understand which protocols are most frequently used in the captured traffic.
-
-Data Fields Used:
+- The top protocols (TCP, HTTP, UDP) captured by the Network Log Analytics (NLA) provide insights into the types of services being utilized on your network.
+Data Fields:
 - protocol
 - timestamp
-
 Insight:
-TCP and HTTP dominate the traffic, indicating that most of the network activity involves web and application-related communication. Monitoring these protocols closely can help detect unusual data transfer behaviors.
-
+- With both TCP and HTTP comprising a large percentage of incoming and outgoing messages, it is reasonable to assume that most of the traffic being collected consists of Web and Application service communications.
+- Monitoring the protocols in this manner will help to identify abnormal data transfer behavior.
+  
 ![alt text](<Top Protocols in Netwrok Logs.png>)
 
-3. Top 10 Source IPs Generating Traffic
-
+# 3. Top 10 Source IPs Generating Traffic
 Description:
-This chart lists the IP addresses responsible for the most log entries. It helps in identifying devices or external hosts that are generating large amounts of traffic.
-
-Data Fields Used:
+- The chart below displays all IPs that produced the highest total number of log entries, which is useful for identifying either devices or external hosts that produce unusually large volumes of data transfers.
+Data Fields:
 - source_ip
 - bytes_transferred
-
 Insight:
-One or more IP addresses generate a disproportionately high number of requests which could indicate either an aggregated dataset entry or potential scanning or brute-force activity.
+- An unusually high volume of requests from one or more IP addresses may indicate that either an aggregated data set was uploaded/downloaded from that IP address or that some form of automated scanning or brute-force attempts were being conducted from those IP addresses.
 
 ![alt text](<Top 10 Source IPs generating Traffics.png>)
 
-4. Threat Type Distribution
-
+# 4. Threat Type Distribution
 Description:
-This visualization categorizes logs based on their threat labels — benign, suspicious, or malicious. It shows how much of the dataset represents safe vs potentially harmful activity.
-
+- Visual Representation of Log Threat Labels, represents Safe vs. Potentially Harmful Activity.
+- The visual representation below lists the logs received by an organization by their corresponding threat label (benign, suspicious, or malicious).
 Data Fields Used:
-- threat_label
-- timestamp
-
+- Threat Label
+- Log Date/Time
 Insight:
-Most logs are labeled as benign, indicating normal network operations. However, the presence of suspicious and malicious entries highlights ongoing risks that need further analysis or mitigation strategies.
-
+- Most of the log entries have a threat label of "benign," which signifies normal business operations being conducted on the network.
+- Nevertheless, the presence of entries with threat labels of "suspicious" and "malicious" provides evidence that there are potential risks to the integrity of the network, and further scrutiny and or remedies are necessary and will require mitigation efforts.
 ![alt text](<Threat Type Distribution.png>)
 
-5. Dashboard Summary
-
-Description:
-All visualizations were combined into a single Kibana dashboard for centralized monitoring.
-This provides a real-time overview of network behavior, traffic patterns, and detected threats.
-
-Key Observations:
-- Balanced action distribution between blocked and allowed connections.
-- Heavy use of web-based protocols (HTTP, HTTPS, TCP).
-- A few source IPs dominate the network activity.
-- Majority of data is benign, but suspicious and malicious traffic exists.
+# 5. Dashboard Summary
+# Description:
+- The use of a single dashboard in Kibana enabled all visualizations to provide one location for viewing key information related to your networks.
+- The Kibana interface offers a way to view network activity as it happens and analyze trends over time, thus allowing administrators to see current activity and determine whether or not that activity matches previously established patterns.
+# Key Observations:
+- The total number of blocked versus allowed connections is evenly distributed.
+-  Web-based protocols (HTTP, HTTPS, and TCP) accounted for the majority of the data transmitted.
+- There are a small number of source IP addresses creating most of the network traffic.
+- While the majority of the transmitted data is considered non-malicious, there were suspicious and/or clearly malicious transmissions detected.
  
 #Extended Findings (ElasticSearch)
 
