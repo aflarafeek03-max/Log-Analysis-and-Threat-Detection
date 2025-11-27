@@ -12,7 +12,7 @@ Elijah A. Acero:	Grafana setup, dashboard comparison, data analysis support, tes
 - The logs were gathered into Elasticsearch and were rendered into visualizations using Kibana and Grafana to show trends in traffic flow, abnormal traffic originating from a given IP address, what traffic was allowed, what traffic was blocked, and to what sensitive endpoints requests to access those endpoints were being made.
 - The goal is to show how raw Source Log data from an organization's Security Operations Center(SOC) can be transformed into useful awareness of potential threats to that organization and allow for timely, effective responses to such threats, representing typical environments for today's modern Security Operations Centers (SOC).
 
-# 2. Rationale for the Project
+# 2. Project Relevance
 - In cybersecurity, log analysis is critical to threat hunting, SOC monitoring, and digital forensics.
 - Most cyber attacks and intrusions start with slight behavior changes detected in the logs of all systems.
 - Using visual analysis of logs, we can identify reconnaissance, brute force attacks, unauthorized scanning, and abuse of sensitive application areas far sooner than would be possible with standard techniques.
