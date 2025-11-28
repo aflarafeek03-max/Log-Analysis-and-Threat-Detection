@@ -67,7 +67,7 @@ Observations:
 - The data shows that for both inbound and outbound connections that were initiated from this location, the number of inbound requests and outbound responses blocked was approximately equal in total counts when compared with all actions that were allowed.
 - Such a finding would indicate a proper balance between filtering the data traffic that passes through these devices and allowing for valid connections.
 
-![alt text](<Action Distribution.png>)
+<img width="943" height="328" alt="Action Distribution" src="https://github.com/user-attachments/assets/9bf817ef-9233-455a-97c9-85d1b7a5755c" />
 
 # 2. Top Protocols in Network Logs
 Description:
@@ -79,7 +79,7 @@ Insight:
 - With both TCP and HTTP comprising a large percentage of incoming and outgoing messages, it is reasonable to assume that most of the traffic being collected consists of Web and Application service communications.
 - Monitoring the protocols in this manner will help to identify abnormal data transfer behavior.
   
-![alt text](<Top Protocols in Netwrok Logs.png>)
+<img width="941" height="324" alt="Top Protocols in Netwrok Logs" src="https://github.com/user-attachments/assets/e13a7f63-4bb3-4ab1-96ca-de2705dd6b01" />
 
 # 3. Top 10 Source IPs Generating Traffic
 Description:
@@ -90,7 +90,7 @@ Data Fields:
 Insight:
 - An unusually high volume of requests from one or more IP addresses may indicate that either an aggregated data set was uploaded/downloaded from that IP address or that some form of automated scanning or brute-force attempts were being conducted from those IP addresses.
 
-![alt text](<Top 10 Source IPs generating Traffics.png>)
+<img width="940" height="329" alt="Top 10 Source IPs generating Traffics" src="https://github.com/user-attachments/assets/75fee3f5-479d-44c4-9f1a-fa07197211ce" />
 
 # 4. Threat Type Distribution
 Description:
@@ -102,7 +102,7 @@ Data Fields Used:
 Insight:
 - Most of the log entries have a threat label of "benign," which signifies normal business operations being conducted on the network.
 - Nevertheless, the presence of entries with threat labels of "suspicious" and "malicious" provides evidence that there are potential risks to the integrity of the network, and further scrutiny and or remedies are necessary and will require mitigation efforts.
-![alt text](<Threat Type Distribution.png>)
+<img width="940" height="327" alt="Threat Type Distribution" src="https://github.com/user-attachments/assets/9bbf129c-a54e-46c7-8781-036ce1dcbe3e" />
 
 # 5. Dashboard Summary
 # Description:
@@ -116,8 +116,7 @@ Insight:
 
  # Extended Findings (Elasticsearch Queries & Statistics)
 
-# 1. Top 10 IP Addresses With Action (Allowed vs Blocked) ![alt text](<Top 10 ips with action.png>)
-
+# 1. Top 10 IP Addresses With Action (Allowed vs Blocked) 
 Description:
 - Sunburst visualisation of the top 10 source IP addresses that were found in the dataset showing all corresponding actions (allowed or blocked).
 - Each slice represents how traffic from the specific IP was handled by the security system.
@@ -129,8 +128,9 @@ Interpretation:
 Key Security Insight:
 - A very limited number of IP addresses generates a large number of the total activity.
 - While the fact that there are equal numbers of allowed and blocked indicates the legitimate mix of traffic coming from these IP addresses, the sheer volume of traffic generated warrants further investigation, as it could be possible that this traffic is the result of an automated service; the result of a misconfigured client; or early indicators of attempts to conduct reconnaissance against the network, as evidenced by the fact that the same client IP attempts to connect several times, resulting in both Approval and Denial actions.
+<img width="1789" height="870" alt="Top 10 ips with action" src="https://github.com/user-attachments/assets/573ee121-ff7d-4a9a-a2b6-addb4cad6978" />
 
-# 2. Log Volume by Day (Top Values) ![alt text](<Top 10 logins.png>) 
+# 2. Log Volume by Day (Top Values) 
 Description:
 The Bar Chart represents The Highest Amount Of Activity Gathered By Users Over the days From The Data Set And The Dates With The Most Activity:
 Interpretation:
@@ -145,8 +145,9 @@ The rest of the Days Demonstrated a Consistent Pattern (Average ~1,030). The Con
 Key Security Insight:
 - The two days with increased user activity should be investigated to determine whether increased User Activity resulted from an increased number of blocked actions/an increased number of repeated access attempts by a single IP, or an  increased number of suspicious or malicious threat claims.
 - Users were using not only average volume throughout 99% of Days, but it was also an indication of normal network activity and how users typically behave.
+ <img width="983" height="619" alt="Top 10 logins" src="https://github.com/user-attachments/assets/2349c72d-bc36-4831-8f2e-1d5312afc061" />
 
-# 3. Hourly Activity: Blocked vs Allowed (Bar Chart) ![alt text](<Allowed blocked.png>)
+# 3. Hourly Activity: Blocked vs Allowed (Bar Chart)
 Description:
 - This visualization looks at how traffic flows through a network hourly through blocked or allowed actions.
 - It gives an overall picture of how the network filters traffic throughout each hour of the day and how regularly and significantly there is a difference between blocked traffic behaviour from allowed traffic behaviour.
@@ -165,8 +166,9 @@ Constant automated scanning
 Key Security Insight:
 - Because both the blocking event and allowing event percentages are so nearly equal, it is more important to review the intent of each blocked or allowed event by reviewing the surrounding context, particularly as it relates to blocking events during specific hours (with an influx on particular IPs) instead of only on raw data event volume.
 -  The balance suggests that, while the need is apparent, both filtering systems are working and evaluating traffic as it enters the network.
+  <img width="1781" height="846" alt="Allowed blocked" src="https://github.com/user-attachments/assets/c9ad9d42-9ca7-481c-9e79-086498aacf65" />
 
-# 4. Request Path (Blocked vs Allowed) ![alt text](<Path.png>)
+# 4. Request Path (Blocked vs Allowed) 
 Description:
 - This graph provides an overview of the volume of allowed versus blocked requests for the five most frequently accessed request paths among many.
 -  It shows which URL endpoints are accessed the most frequently, and how many of those requests were denied as a result of security measures.
@@ -193,6 +195,7 @@ Interpretation:
 Key Security Insight:
 - The volume of access attempts on Authentication and Administrator type endpoints will most likely indicate a **brute force** attempt or at the very least, show patterns of possible automated Recon Activity.
 - Also, the near-even split of allowed versus blocked traffic indicates that while the security system is blocking a considerable number of requests, some potentially malicious traffic is still making its way to the application, and emphasizes the need for tighter access controls at the sensitive endpoints or implementing stricter rate limits.
+<img width="1789" height="860" alt="Path" src="https://github.com/user-attachments/assets/efeb6ea5-9ab5-4cb8-ad62-517633e5ca46" />
 
 # 5.Comparison of Kibana Visualizations and Kibana Lens Visual Analytics
 - In this project, we used two different visualization techniques within Kibana to analyze cybersecurity logs — Basic Kibana Visualizations and Kibana Lens (Elastic Lens).
