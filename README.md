@@ -3,9 +3,9 @@
 # Team Members: Afla Rafeek | Saanvi Shah | Elijah A. Acero
 
 # Group Members & Roles
-Saanvi Shah:	Data processing, cleaning & formatting; development of detection rules; documentation & result interpretation
+Saanvi Shah:	Data processing, cleaning & formatting; dashboard comparisons; documentation & result interpretation
 Afla Rafeek:	Environment setup (Windows), dataset upload, log ingestion, Kibana visualization & dashboard creation
-Elijah A. Acero:	Grafana setup, dashboard comparison, data analysis support, testing & validation
+Elijah A. Acero:	Kibana Lens Graphs,data analysis support, testing & validation
 
 # 1. Project Summary
 - The focus of this project is on the analysis of cybersecurity log data to identify suspicious and/or malicious activities via interactive dashboards. 
