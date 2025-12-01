@@ -264,7 +264,7 @@ Basic Graph 4 - Lens Graph 2 & 3
 # Lessons Learned
 - Data Cleaning is Essential to Provide Accurate Analysis
 - Using Visualization Makes Security Decisions Faster
-- Using Multiple Tools (Kibana + Grafana) Increases Monitoring Capabilities
+- Using Multiple Tools (Kibana + Lens Visualization) Increases Monitoring Capabilities
 # Future Enhancements
 - Add Automatic Alerting and Correlation Rules
 - Increase Dataset by Adding more Log Types (Firewall, DNS, Proxy)
@@ -274,6 +274,6 @@ Basic Graph 4 - Lens Graph 2 & 3
 # References
 - Kaggle Cybersecurity Threat Detection Dataset
 - Elastic Stack Documentation
-- Grafana Documentation
+- Kibana Lens Visualization Documentation
 - BFOR 519 Course Resources
 - Chat Gpt 5 and Gooogle for some visulization and comparison research
