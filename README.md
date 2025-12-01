@@ -9,7 +9,7 @@ Elijah A. Acero:	Kibana Lens Graphs,data analysis support, testing & validation
 
 # 1. Project Summary
 - The focus of this project is on the analysis of cybersecurity log data to identify suspicious and/or malicious activities via interactive dashboards. 
-- The logs were gathered into Elasticsearch and were rendered into visualizations using Kibana and Grafana to show trends in traffic flow, abnormal traffic originating from a given IP address, what traffic was allowed, what traffic was blocked, and to what sensitive endpoints requests to access those endpoints were being made.
+- The logs were gathered into Elasticsearch and were rendered into visualizations using Kibana and Kibana Lens Visualization to show trends in traffic flow, abnormal traffic originating from a given IP address, what traffic was allowed, what traffic was blocked, and to what sensitive endpoints requests to access those endpoints were being made.
 - The goal is to show how raw Source Log data from an organization's Security Operations Center(SOC) can be transformed into useful awareness of potential threats to that organization and allow for timely, effective responses to such threats, representing typical environments for today's modern Security Operations Centers (SOC).
 
 # 2. Project Relevance
@@ -18,7 +18,7 @@ Elijah A. Acero:	Kibana Lens Graphs,data analysis support, testing & validation
 - Using visual analysis of logs, we can identify reconnaissance, brute force attacks, unauthorized scanning, and abuse of sensitive application areas far sooner than would be possible with standard techniques.
 
 # Why We Selected This Topic
-- Having hands-on experience with modern monitoring solutions, like Elasticsearch, Kibana, and Grafana, would help us widen our knowledge of currently used solutions in the industry for operational monitoring and security analytics.
+- Having hands-on experience with modern monitoring solutions, like Elasticsearch, Kibana, and Kibana Lens Visualization, would help us widen our knowledge of currently used solutions in the industry for operational monitoring and security analytics.
 
 # Skills & Knowledge Acquired
 - Log preprocessing, normalization, and ingestion
@@ -39,7 +39,7 @@ Datasets: Cybersecurity Threat Detection Logs (CSV file in Kaggle)
 # Tools utilised:
 - Elasticsearch used as the indexing/search engine
 - Kibana provides security dashboards with analyses performed within them
-- Grafana provides visual comparisons and monitoring capabilities
+- Kibana Lens Visualization provides visual comparisons and monitoring capabilities
 - Python  to assist with data cleansing and formatting.
 
 # Architecture / Workflow:
@@ -51,8 +51,8 @@ Datasets: Cybersecurity Threat Detection Logs (CSV file in Kaggle)
 3. Set up Elasticsearch & Kibana on a Windows machine
 4. Import the cleaned up data into an Elasticsearch index
 5. Develop visualizations in Kibana (activity, IPs by distribution, protocols)
-6. Set up a Grafana dashboard for side-by-side comparison
-7. Test, analyze and validate the results
+6. Set up a Kibana Lens Visualization dashboard for side-by-side comparison
+7. Test, analyze, and validate the results
 8. Identify insights and record them
 
 # 4.Results
