@@ -43,7 +43,7 @@ Datasets: Cybersecurity Threat Detection Logs (CSV file in Kaggle)
 - Python  to assist with data cleansing and formatting.
 
 # Architecture / Workflow:
-<img width="908" height="680" alt="Screenshot 2025-11-27 002209" src="https://github.com/user-attachments/assets/a55f92da-7219-4fcc-aa7b-a8df42dedb41" />
+<img width="690" height="610" alt="image" src="https://github.com/user-attachments/assets/a02454f8-3bb3-4a38-936c-e9e77db1e656" />
 
 # Step-by-Step Process:
 1. Download the dataset
